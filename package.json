@@ -1,0 +1,11 @@
+{
+  "name": "tdd_smart_contract",
+  "version": "1.0.0",
+  "description": "Livrable pour le cours de Test Driven Development",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Thomas Lefebvre, Alexandre Battut",
+  "license": "ISC"
+}
