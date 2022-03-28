@@ -18,3 +18,7 @@ Go to the directory then do :
 
 - truffle develop (it will launch a local blockchain)
 - truffle test (to run all tests)
+
+3) Documentation for the project 
+
+https://medium.com/coinmonks/guide-to-creating-your-own-nft-with-javascript-solidity-part-1-of-3-7909b80fae94
