@@ -3,12 +3,9 @@ const NFT = artifacts.require('NFT');
 
 contract('NFT', async (account) => {
 
-  before(async function () {
+  it('Should be able to generate a first NFT',async () => {
     const nft = await NFT.deployed();
-  })
-
-  it('Should be able to generate a first NFT',() => {
-    nft.mint("test","This is a test nft");
-    
+    await nft.mint("test","This is a test nft");
+    assert(await nft.getName() == "test")
   });
 });
