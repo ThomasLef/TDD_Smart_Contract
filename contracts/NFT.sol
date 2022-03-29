@@ -29,3 +29,22 @@ contract NFT {
         return owner;
     }
 }
+
+contract NFTlist {
+
+    NFT[] public nfts;
+
+    function test() public pure returns (uint) {
+        return 0;
+    }
+
+    function mint(string calldata _name, string calldata _description) public {
+        NFT nft;
+        nft.mint(_name, _description);
+        nfts.push(nft);
+    }
+
+    function getNFT(uint id) public view returns (NFT) {
+        return nfts[id];
+    }
+}
