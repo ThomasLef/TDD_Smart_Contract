@@ -8,7 +8,7 @@ contract NFT {
     string public name;
     string public description;
 
-    function mint(string calldata _name, string calldata _description) public {
+    function setInfo(string calldata _name, string calldata _description) public {
         name = _name;
         description = _description;
         owner = msg.sender;
@@ -33,18 +33,18 @@ contract NFT {
 contract NFTlist {
 
     NFT[] public nfts;
+    uint[] public test = [2];
 
-    function test() public pure returns (uint) {
-        return 0;
+    function testList() public view returns (uint) {
+        return test[0];
     }
 
     function mint(string calldata _name, string calldata _description) public {
-        NFT nft;
-        nft.mint(_name, _description);
-        nfts.push(nft);
+        nfts.push(new NFT());
+        nfts[nfts.length - 1].setInfo(_name, _description);
     }
 
-    function getNFT(uint id) public view returns (NFT) {
-        return nfts[id];
+    function getNFTName(uint id) public view returns (string memory) {
+        return nfts[id].getName();
     }
 }
