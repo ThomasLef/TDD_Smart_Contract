@@ -59,13 +59,33 @@ contract NFTlist {
 
     // Main functions
 
-    function mint(string calldata _name, string calldata _description) public {
+    function mint(string calldata _name, string calldata _description) public returns(uint) {
         nfts.push(new NFT());
         nfts[nfts.length - 1].setInfo(_name, _description);
+        return nfts.length -1;
     }
 
     function transfer(uint id, address _to) public {
         nfts[id].transfer(_to);
+    }
+
+    function setPrices(uint[][] calldata pricelist) public {
+        for (uint i=0; i < pricelist.length; i++){
+            nfts[pricelist[i][0]].setPrice(pricelist[i][1]);
+        }
+    }
+
+    function putUpForSale(uint _id) public {
+        nfts[_id].putUpForSale();
+    }
+
+    function buy(uint _id, address _by) public {
+        require(nfts[_id].isItForSale() == true, "Not up for sale.");
+        //require(_by.balance >= nftl.getNFT(_id).getPrice(), "Not enough funds.");
+
+        //need to implement the transfer of money
+
+        transfer(_id, _by);
     }
 
     // Getters
